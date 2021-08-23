@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="login = !login">Toggle</button>
+        <template v-if="login">
+            <label for="">Login</label>
+            <input type="text" placeholder="login" key="campo-login">
+        </template>
+        <template v-else>
+            <label for="">Login</label>
+            <input type="text" placeholder="email" key="campo-email">
+        </template>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                login: true,
+                
+            }
+        });
+    </script>
+</body>
+</html>

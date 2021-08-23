@@ -1,0 +1,236 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        .caixa {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            margin-right: 10px;
+            background-color: gray;
+        }
+        .coral {
+            background-color: lightcoral;
+        }
+        .verde {
+            background-color: lightgreen;
+        }
+        .azul {
+            background-color: lightblue;
+        }
+        .circulo {
+            border-radius: 100%;
+        }
+
+        #app div div{
+            display: inline-block;
+            margin-right: 10px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>Curso: {{ curso }} | {{ nomeDoInstrutor() }}</p>
+        <a v-bind:href="docs">Vuejs</a>
+        <a :href="docs">Vuejs</a>
+        <p>Instrutor: <span v-text='instrutor'></span></p>
+        <p v-once>Nome: {{ nome }}</p>
+        <p>Nome: {{ getNome() }}</p>
+        <p>{{ cursoHTML }}</p>
+        <p v-html="cursoHTML"></p>
+        <button v-on:click="incrementar">Clique</button>
+        <p>Botão clicado {{ cliques }} vezes.</p>
+        <input v-on:blur="exibirNome('Meu nome é: ', $event)" type="text">
+        <p>{{ nome2 }}</p>
+        <hr>
+        <p v-on:click="onClick('p', $event)">
+            Curso de VueJS
+            <button v-on:click.stop="onClick('button', $event)">Clique</button>
+        </p>
+        <form action="">
+            <input type="text">
+            <button type="submit" v-on:click="onSubmit">Enviar sem modificador de evento</button>
+            <button type="submit" v-on:click.prevent="onSubmit">Enviar com modificador de evento</button>
+        </form>
+        <hr>
+        <input type="text" v-on:keyup="onKey" placeholder="Qualquer tecla"><br> 
+        <input type="text" v-on:keyup.enter="onKey" placeholder="Tecla Enter"><br>
+        <input type="text" v-on:keyup.enter.esc="onKey" placeholder="Tecla Enter e Escape"><br> 
+        <input type="text" v-on:keyup.arrow-up="onKey" placeholder="Tecla seta para cima"><br>
+        <input type="text" v-on:keyup.ctrl.enter="onKey" placeholder="Tecla CTRL+ENTER"><br>
+        <input type="text" v-on:keyup.ctrl.enter.exact="onKey" placeholder="Tecla CTRL+ENTER exatamente"><br>
+        <hr>
+        <button v-on:click="onClick">Botão esquerdo</button>
+        <button v-on:click.middle="onClick">Botão do meio</button>
+        <button v-on:click.right="onClick">Botão direita</button>
+        <button @:click.right.prevent="onClick">Botão direita sem menu de contexto</button>
+        <hr>
+        <p>{{ curso }} => {{ curso.split('').reverse().join('') }}</p>
+        <p>{{ curso }} => {{ cursoInvertido }}</p>
+        <input type="text" @keyup.enter="alterarNomeDoCurso">
+        <hr>
+        <p>Nome original: {{ curso }}</p>
+        <p>Nome invertido (computed): {{ cursoInvertidoComputed }}</p>
+        <p>Nome invertido (methods): {{ cursoInvertidoMethods() }}</p>
+        <hr>
+        <p>{{ nomeCompleto }}</p>
+        <button @click="alterarNomes">Alterar nomes</button>
+        <hr>
+        <p>{{ nomeCompleto2 }}</p>
+        <button @click="alterarNome">Alterar nomes</button>
+        <hr>
+        <p>Nome: {{ nomeCompleto3 }}</p>
+        <input type="text" @keyup.enter="alterarNome2">
+        <hr>
+        <!-- <input type="text" :value="nome" @input="nome = $event.target.value"> -->
+        <input type="text" v-model="nome3">
+        <p>Nome: {{ nome3 }}</p>
+        <hr>
+        <div 
+            class="caixa" 
+            :class="{ coral: aplicarClasse }"
+            @click="aplicarClasse = !aplicarClasse"></div>
+        <div class="caixa" :class="nomeDaClasse"></div>
+        <div class="caixa" :class="classesCSS" @click="aplicarClasse = !aplicarClasse"></div>
+        <div class="caixa" :class="[ 'circulo', nomeDaClasse, { verde: aplicarClasse} ]"></div>
+        <input type="text" v-model="nomeDaClasse">
+        <hr>
+        <div>
+            <div 
+                style="width: 200px; height: 200px;"
+                :style="{'background-color': cor, height: tamanho + 'px'}"
+                ></div>
+                <div :style="estilosCSS"></div>
+                <div :style="[ estilosCSS, { border: '2px solid black', 'background-color': 'blue' } ]"></div>
+            <input type="text" v-model="cor" placeholder="cor">
+            <input type="text" v-model.number="tamanho" placeholder="tamanho">
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                curso: 'VueJS',
+                instrutor: 'Plinio Naves',
+                nome: 'Plinio Naves',
+                nome3: 'Plinio Naves',
+                docs: 'https://vuejs.org',
+                cursoHTML: 'Curso de <span style="color: red">VueJS</span>',
+                cliques: 0,
+                nome2: '',
+                primeiroNome: 'Plinio',
+                ultimoNome: 'Naves',
+                nomeCompleto2: 'Plinio Naves',
+                aplicarClasse: false,
+                nomeDaClasse: '',
+                cor: '',
+                tamanho: 200,
+            },
+            methods: {
+                nomeDoInstrutor: function() {
+                    return this.instrutor;
+                },
+                getNome: function() {
+                    this.nome = 'Plinio';
+                    return this.nome;
+                },
+                incrementar: function() {
+                    this.cliques++;
+                },
+                exibirNome: function(texto, event) {
+                    this.nome2 = texto + event.target.value;
+                },
+                onClick(elementoAlvo, event) {
+                    // event.stopPropagation(); O Vue proporciona maneira melhor de para propagação: ".stop"
+                    console.log(event.type, ':', elementoAlvo);
+                },
+                onSubmit(event) {
+                    console.log('Formulário enviado!');
+                },
+                onKey(event) {
+                    console.log('Tecla ' + event.key + ' pressionada!');
+                },
+                onClick(event) {
+                    console.log('Botão ' + event.button + ' precissionado!');
+                },
+                alterarNomeDoCurso(event) {
+                    this.curso = event.target.value;
+                },
+                cursoInvertidoMethods: function() {
+                    return this.curso.split('').reverse().join('');
+                },
+                alterarNomes: function (event) {
+                    this.primeiroNome = 'Naves';
+                    this.ultimoNome = 'Plinio';
+                },
+                alterarNome: function (event) {
+                    this.nomeCompleto2 = 'Naves Plinio';
+                },
+                alterarNome2: function (event) {
+                    this.nomeCompleto3 = event.target.value;
+                },
+            },
+            // computed precisa ser sincrono
+            // obrigado retornar valor
+            computed: {
+                cursoInvertido: function() {
+                    return this.curso.split('').reverse().join('');
+                },
+                cursoInvertidoComputed: function() {
+                    return this.curso.split('').reverse().join('');
+                },
+                nomeCompleto: function () {
+                    return this.primeiroNome + ' ' + this.ultimoNome;
+                },
+                nomeCompleto3: {
+                    get: function () {
+                        return this.primeiroNome + ' ' + this.ultimoNome;
+                    },
+                    set: function(novoNome) {
+                        var nomes = novoNome.split(' ');
+                        this.primeiroNome = nomes[0];
+                        this.ultimoNome = nomes[nomes.length - 1];
+                    }
+                },
+                classesCSS: function() {
+                    return {
+                        azul: this.aplicarClasse,
+                        circulo: this.aplicarClasse,
+                        verde: !this.aplicarClasse
+                    }
+                },
+                estilosCSS: function() {
+                    return {
+                        backgroundColor: this.cor,
+                        height: (this.tamanho + 10) + 'px',
+                        width: '100px',
+                    }
+                }
+            },
+            // preferir usar computed do watch
+            // usar watch quando precisar usar dados assincronos
+            // quando não precisar retornar valor
+            watch: {
+                // primeiroNome: function(novoPrimeiroNome, antigoPrimeiroNome) {
+                //     this.nomeCompleto = novoPrimeiroNome + ' ' + this.ultimoNome;
+                // },
+                // ultimoNome: function(novoUltimoNome, antigoUltimoNome) {
+                //     this.nomeCompleto = this.primeiroNome + ' ' + novoUltimoNome;
+                // },
+                nomeCompleto2: function(novoNomeCompleto, antigoNomeCompleto) {
+                    let vm = this;
+                    setTimeout(function() {
+                        vm.nomeCompleto2 = 'nome resetado';
+                    }, 3000);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
