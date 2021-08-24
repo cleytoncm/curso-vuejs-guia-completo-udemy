@@ -131,3 +131,11 @@ export default {
   }),
 };
 </script>
+
+<style lang="scss">
+  $cor: green;
+
+  h1 {
+    color: $cor;
+  }
+</style>
