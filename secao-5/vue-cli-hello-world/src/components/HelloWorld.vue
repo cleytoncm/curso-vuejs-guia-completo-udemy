@@ -133,9 +133,9 @@ export default {
 </script>
 
 <style lang="scss">
-  $cor: green;
+$cor: red;
 
-  h1 {
-    color: $cor;
-  }
+h1 {
+  color: $cor;
+}
 </style>
