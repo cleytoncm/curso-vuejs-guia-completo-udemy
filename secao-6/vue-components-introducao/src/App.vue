@@ -1,13 +1,18 @@
 <template>
-  <app-contador></app-contador>
+  <div>
+    <AppHeader />
+    <contador></contador>
+  </div>
 </template>
 
 <script>
-  import AppContador from "./AppContador";
+  import Contador from "./components/contador/Contador";
+  import AppHeader from './components/shared/AppHeader';
 
   export default {
     components: {
-      'app-contador': AppContador,
+      Contador,
+      AppHeader
     }
   }
 </script>
