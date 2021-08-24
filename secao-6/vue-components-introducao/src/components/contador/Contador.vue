@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>Clicado {{ contador }}</h2>
+  <div :class="$style.contador">
+    <h3>Clicado {{ contador }} vezes</h3>
     <button @click="incrementar">Incrementar</button>
   </div>
 </template>
@@ -20,6 +20,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style module>
+  .contador {
+    border: 1px solid red;
+  }
 </style>
