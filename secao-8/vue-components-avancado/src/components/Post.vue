@@ -1,13 +1,32 @@
 <template>
-  <div>
-    <slot></slot>
+  <div class="post">
+    <div class="post-cabecalho">
+      <slot name="cabecalho"></slot>
+    </div>
+    <div class="post-conteudo">
+      <slot name="conteudo"></slot>
+    </div>
+    <div class="post-rodape">
+      <slot name="rodape"></slot>
+    </div>
   </div>
 </template>
 
-<script>
-  export  default {
-    props: {
-      titulo: String
-    }
+<style scoped>
+  .post {
+    margin: 15px auto;
   }
-</script>
+
+  .post-cabecalho {
+    padding: 5px 12px;
+    background-color: #eee;
+  }
+
+  .post-conteudo {
+    font-size: 16px;
+  }
+
+  .post-rodape {
+    font-style: italic;
+  }
+</style>
