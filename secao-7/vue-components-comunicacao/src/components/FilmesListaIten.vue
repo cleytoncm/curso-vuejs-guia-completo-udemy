@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     titulo: {
       type: String,
@@ -23,7 +24,7 @@ export default {
     },
   },
   created() {
-    console.log(typeof this.titulo);
+    console.log('Attrs: ', this.$attrs);
   }
 }
 </script>
