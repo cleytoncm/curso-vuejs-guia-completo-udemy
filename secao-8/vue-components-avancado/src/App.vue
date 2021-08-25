@@ -24,7 +24,18 @@
 
   export default {
     components: {
-      Assincrono: () => import('./components/Assincrono'),
+      Assincrono: () => ({
+        // eslint-disable-next-line no-unused-vars
+        component: new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(import('./components/Assincrono'));
+          }, 2000)
+        }),
+        loading: { template: '<p>Carregando...</p>' },
+        error: { template: '<p>Erro ao carregar components!</p>' },
+        delay: 200,
+        timeout: 3000
+      }),
       Home,
       PostsLista,
       Sobre
