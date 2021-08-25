@@ -21,10 +21,13 @@
             @input="filmeSelecionado = { propriedade: 'ano', valor: $event.target.value }"
         >
       </div>
+
+      <button @click="salvarFilme" class="btn btn-primary float-end">Salvar</button>
     </div>
 </template>
 
 <script>
+import {eventBus} from "../main";
 export default {
   props: {
     filme: {
@@ -50,6 +53,12 @@ export default {
         )
       }
     }
-  }
+  },
+  methods: {
+    salvarFilme() {
+        // this.$emit('atualizarFilme', this.filmeLocal);
+      eventBus.atualizarFilme(this.filmeLocal);
+    },
+  },
 }
 </script>
