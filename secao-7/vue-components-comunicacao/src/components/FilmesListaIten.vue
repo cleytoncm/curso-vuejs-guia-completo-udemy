@@ -1,6 +1,6 @@
 <template>
     <li class="list-group-item">
-        <span>{{ filmeTituloConcatenado }}</span>
+        <span>{{ filme.titulo }} | {{ filme.ano }}</span>
         <button class="btn btn-secondary float-end">Selecionar</button>
     </li>
 </template>
@@ -9,22 +9,10 @@
 export default {
   inheritAttrs: false,
   props: {
-    titulo: {
-      type: String,
+    filme: {
+      type: Object,
       required: true,
-    },
-    ano: {
-      type: Number,
-      required: true,
-    },
-  },
-  computed: {
-    filmeTituloConcatenado() {
-      return `Título: ${this.titulo}`;
-    },
-  },
-  created() {
-    console.log('Attrs: ', this.$attrs);
+    }
   }
 }
 </script>
