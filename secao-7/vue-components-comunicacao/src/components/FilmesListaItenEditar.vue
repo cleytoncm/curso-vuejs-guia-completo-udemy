@@ -44,7 +44,7 @@ export default {
     filmeSelecionado: {
       get() {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        return this.filmeLocal = this.filme;
+        return this.filme;
       },
       set(dados) {
         this.filmeLocal = Object.assign(
@@ -53,6 +53,11 @@ export default {
             { [dados.propriedade]: dados.valor }
         )
       }
+    }
+  },
+  watch: {
+    filme(novoFilme) { // crie o watcher na prop "filme"
+      this.filmeLocal = Object.assign({}, novoFilme)
     }
   },
   methods: {
