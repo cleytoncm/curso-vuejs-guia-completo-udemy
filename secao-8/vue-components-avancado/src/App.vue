@@ -2,6 +2,13 @@
   <div id="app" class="container">
     <h1>VueJS</h1>
 
+<!--    Vue >=2.6 usar como abaixo -->
+<!--    <PostsLista :posts="posts" v-slot="{ meuPost }">-->
+<!--      <h2>{ meuPost.titulo }}</h2>-->
+<!--      <p>{{ meuPost.conteudo }}</p>-->
+<!--      <small>{{ meuPost.autor }}</small>-->
+<!--    </PostsLista>-->
+
     <PostsLista :posts="posts" />
     <hr>
     <h1>Slots com escopo</h1>
