@@ -6,8 +6,6 @@
     <button @click="componentSelecionado = 'PostsLista'">Posts</button>
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
-    <p>{{componentSelecionado}}</p>
-
     <component :is="componentSelecionado" v-bind="propsAtuais"></component>
   </div>
 </template>
