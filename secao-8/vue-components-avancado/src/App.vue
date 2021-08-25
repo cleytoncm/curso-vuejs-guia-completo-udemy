@@ -5,6 +5,7 @@
     <button @click="componentSelecionado = 'Home'">Home</button>
     <button @click="componentSelecionado = 'PostsLista'">Posts</button>
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
+    <button @click="componentSelecionado = 'Assincrono'">Assincrono</button>
 
 <!--    <keep-alive :include="'Sobre'">-->
 <!--    <keep-alive :exclude="['Home', 'PostsLista']">-->
@@ -23,6 +24,7 @@
 
   export default {
     components: {
+      Assincrono: () => import('./components/Assincrono'),
       Home,
       PostsLista,
       Sobre
