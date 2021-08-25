@@ -3,12 +3,12 @@
     <h1>Components Dinâmicos</h1>
 
     <button @click="componentSelecionado = 'Home'">Home</button>
-    <button @click="componentSelecionado = 'PostsList'">Posts</button>
+    <button @click="componentSelecionado = 'PostsLista'">Posts</button>
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
     <p>{{componentSelecionado}}</p>
 
-    <component :is="componentSelecionado"></component>
+    <component :is="componentSelecionado" v-bind="propsAtuais"></component>
   </div>
 </template>
 
@@ -30,6 +30,11 @@
           {id: 1, titulo: 'Components no Vue', conteudo: 'Components são uma das peças mais importantes do Vue', autor: 'Cleyton de Castro'},
           {id: 2, titulo: 'Distribuindo conteúdo em slots', conteudo: 'Slosts podem ser usados como repositórios de códigos HTML', autor: 'Cleyton de Castro'},
         ]
+      }
+    },
+    computed: {
+      propsAtuais() {
+        return this.componentSelecionado === 'PostsLista' ? { posts: this.posts } : {}
       }
     }
   }
