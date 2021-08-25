@@ -9,10 +9,10 @@
       <ul class="list-group list-group-flush">
 
         <FilmesListaIten
-            v-for="(filme, index) in filmes"
-            :key="index"
-            :filmeTitulo="filme"/>
-
+            v-for="filme in filmes"
+            :key="filme.id"
+            v-bind="filme"
+        />
       </ul>
     </div>
 
@@ -39,10 +39,10 @@ export default {
   data() {
     return {
       filmes: [
-          'Vingadores: Guerra Infinita',
-          'Homem Formiga e a Vespa',
-          'Pantera Negra',
-          'Deadpool 2'
+        {id: 1, titulo: 'Vingadores: Guerra Infinita', ano: 2018},
+        {id: 2, titulo: 'Homem Formiga e a Vespa', ano: 2018},
+        {id: 3, titulo: 'Pantera Negra', ano: 2018},
+        {id: 4, titulo: 'Deadpool 2', ano: 2018},
       ]
     }
   }

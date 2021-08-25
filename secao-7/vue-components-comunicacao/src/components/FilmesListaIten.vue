@@ -8,15 +8,22 @@
 <script>
 export default {
   props: {
-    filmeTitulo: String,
+    titulo: {
+      type: String,
+      required: true,
+    },
+    ano: {
+      type: Number,
+      required: true,
+    },
   },
   computed: {
     filmeTituloConcatenado() {
-      return `Título: ${this.filmeTitulo}`;
+      return `Título: ${this.titulo}`;
     },
   },
   created() {
-    console.log(typeof this.filmeTitulo);
+    console.log(typeof this.titulo);
   }
 }
 </script>
