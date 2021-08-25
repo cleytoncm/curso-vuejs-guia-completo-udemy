@@ -36,7 +36,7 @@
 </template>
 
 <script>
-
+import { eventBus } from '../main';
 import FilmesListaIten from './FilmesListaIten.vue'
 import FilmesListaItenEditar from './FilmesListaItenEditar.vue'
 import FilmesListaItenInfo from './FilmesListaItenInfo.vue'
@@ -46,6 +46,11 @@ export default {
     FilmesListaIten,
     FilmesListaItenEditar,
     FilmesListaItenInfo
+  },
+  created() {
+    eventBus.$on('selecionarFilme', (filmeSelecionado) => {
+      this.filmeSelecionado = filmeSelecionado;
+    })
   },
   data() {
     return {
