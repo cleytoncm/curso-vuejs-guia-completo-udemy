@@ -3,8 +3,8 @@
     <h1>VueJS</h1>
     <Post titulo="Components no Vue">
       <h2 slot="cabecalho">Components no Vue</h2>
-      <template slot="conteudo">
-        <p slot="conteudo">Compopnents são uma das peças mais importantes no Vue</p>
+      <template>
+        <p>Components são uma das peças mais importantes no Vue</p>
         <span>...</span>
       </template>
       <small slot="rodape">por Cleyton de Castro</small>
