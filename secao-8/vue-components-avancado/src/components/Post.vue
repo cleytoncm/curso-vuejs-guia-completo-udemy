@@ -35,6 +35,10 @@
     font-style: italic;
   }
 
+  .post-paragrafo {
+    color: green;
+  }
+
   .link {
     float: right;
   }

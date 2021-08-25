@@ -4,10 +4,10 @@
     <Post titulo="Components no Vue">
       <h2 slot="cabecalho">Components no Vue</h2>
       <template>
-        <p>Components são uma das peças mais importantes no Vue</p>
+        <p class="post-paragrafo">Components são uma das peças mais importantes no Vue</p>
         <span>...</span>
       </template>
-      <small slot="rodape">por Cleyton de Castro</small>
+      <small slot="rodape">por {{autor}}</small>
     </Post>
   </div>
 </template>
@@ -18,6 +18,11 @@
   export default {
     components: {
       Post
+    },
+    data() {
+      return {
+        autor: 'Cleyton de Castro'
+      }
     }
   }
 </script>
