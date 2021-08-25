@@ -43,7 +43,8 @@ export default {
   computed: {
     filmeSelecionado: {
       get() {
-        return this.filme
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        return this.filmeLocal = this.filme;
       },
       set(dados) {
         this.filmeLocal = Object.assign(
