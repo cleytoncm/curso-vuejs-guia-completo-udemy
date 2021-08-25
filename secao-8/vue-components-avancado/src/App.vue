@@ -6,6 +6,7 @@
     <button @click="componentSelecionado = 'PostsLista'">Posts</button>
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
     <button @click="componentSelecionado = 'Assincrono'">Assincrono</button>
+    <button @click="componentSelecionado = 'Contato'">Contato</button>
 
 <!--    <keep-alive :include="'Sobre'">-->
 <!--    <keep-alive :exclude="['Home', 'PostsLista']">-->
@@ -22,6 +23,13 @@
   import PostsLista from './components/PostsLista';
   import Sobre from "./components/Sobre";
 
+  const Contato = {
+    render: h => h({
+      name: 'ContatoDados',
+      template: '<h2>Component Anonimo</h2>'
+    })
+  }
+
   export default {
     components: {
       Assincrono: () => ({
@@ -36,6 +44,7 @@
         delay: 200,
         timeout: 3000
       }),
+      Contato,
       Home,
       PostsLista,
       Sobre
