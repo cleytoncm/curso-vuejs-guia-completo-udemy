@@ -6,7 +6,9 @@
     <button @click="componentSelecionado = 'PostsLista'">Posts</button>
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
-    <component :is="componentSelecionado" v-bind="propsAtuais"></component>
+    <keep-alive>
+      <component :is="componentSelecionado" v-bind="propsAtuais"></component>
+    </keep-alive>
   </div>
 </template>
 
