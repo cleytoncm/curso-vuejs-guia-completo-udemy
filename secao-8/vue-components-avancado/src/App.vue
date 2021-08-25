@@ -6,7 +6,11 @@
     <button @click="componentSelecionado = 'PostsLista'">Posts</button>
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
-    <keep-alive>
+<!--    <keep-alive :include="'Sobre'">-->
+<!--    <keep-alive :exclude="['Home', 'PostsLista']">-->
+<!--    <keep-alive :include="/Home|Sobre/">-->
+<!--    <keep-alive :include="/Home|Sobre/">-->
+    <keep-alive max="2">
       <component :is="componentSelecionado" v-bind="propsAtuais"></component>
     </keep-alive>
   </div>
