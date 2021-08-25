@@ -1,37 +1,31 @@
 <template>
   <div id="app" class="container">
-    <h1>VueJS</h1>
+    <h1>Components Dinâmicos</h1>
 
-<!--    Vue >=2.6 usar como abaixo -->
-<!--    <PostsLista :posts="posts" v-slot="{ meuPost }">-->
-<!--      <h2>{ meuPost.titulo }}</h2>-->
-<!--      <p>{{ meuPost.conteudo }}</p>-->
-<!--      <small>{{ meuPost.autor }}</small>-->
-<!--    </PostsLista>-->
+    <button @click="componentSelecionado = 'Home'">Home</button>
+    <button @click="componentSelecionado = 'PostsList'">Posts</button>
+    <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
-    <PostsLista :posts="posts" />
-    <hr>
-    <h1>Slots com escopo</h1>
-    <PostsLista :posts="posts">
-      <template slot-scope="{meuPost}">
-        <h2>{{meuPost.titulo}}</h2>
-        <p>{{meuPost.conteudo}}</p>
-        <small>{{meuPost.autor}}</small>
-      </template>
-    </PostsLista>
+    <p>{{componentSelecionado}}</p>
 
+    <component :is="componentSelecionado"></component>
   </div>
 </template>
 
 <script>
+  import Home from "./components/Home";
   import PostsLista from './components/PostsLista';
+  import Sobre from "./components/Sobre";
 
   export default {
     components: {
-      PostsLista
+      Home,
+      PostsLista,
+      Sobre
     },
     data() {
       return {
+        componentSelecionado: 'Home',
         posts: [
           {id: 1, titulo: 'Components no Vue', conteudo: 'Components são uma das peças mais importantes do Vue', autor: 'Cleyton de Castro'},
           {id: 2, titulo: 'Distribuindo conteúdo em slots', conteudo: 'Slosts podem ser usados como repositórios de códigos HTML', autor: 'Cleyton de Castro'},
