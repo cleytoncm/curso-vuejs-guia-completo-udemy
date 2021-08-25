@@ -12,6 +12,7 @@
             v-for="filme in filmes"
             :key="filme.id"
             :filme="filme"
+            :class="aplicarClasseAtiva(filme)"
             @selecionarFilme="filmeSelecionado = $event"
         />
       </ul>
@@ -46,6 +47,13 @@ export default {
         {id: 4, titulo: 'Deadpool 2', ano: 2018, diretor: 'Stan Lee'},
       ],
       filmeSelecionado: undefined
+    }
+  },
+  methods: {
+    aplicarClasseAtiva(filmeIterado) {
+      return {
+        active: this.filmeSelecionado && this.filmeSelecionado.id === filmeIterado.id
+      }
     }
   }
 }
