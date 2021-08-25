@@ -12,6 +12,7 @@
             v-for="filme in filmes"
             :key="filme.id"
             :filme="filme"
+            @selecionarFilme="filmeSelecionado = $event"
         />
       </ul>
     </div>
@@ -43,7 +44,8 @@ export default {
         {id: 2, titulo: 'Homem Formiga e a Vespa', ano: 2018, diretor: 'Stan Lee'},
         {id: 3, titulo: 'Pantera Negra', ano: 2018, diretor: 'Stan Lee'},
         {id: 4, titulo: 'Deadpool 2', ano: 2018, diretor: 'Stan Lee'},
-      ]
+      ],
+      filmeSelecionado: undefined
     }
   }
 }
