@@ -10,11 +10,22 @@
     <div class="container">
       <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
 
-      <transition
+<!--      <transition
           enter-class=""
           enter-active-class="animate__animated animate__bounceInLeft"
           enter-to-class=""
           leave-active-class="animate__animated animate__bounceOutDown"
+      >-->
+      <transition
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @after-enter="afterEnter"
+          @enter-cancelled="enterCancelled"
+
+          @before-leave="beforeLeave"
+          @leave="leave"
+          @after-leave="afterLeave"
+          @leave-cancelled="leaveCancelled"
       >
         <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
       </transition>
@@ -30,6 +41,36 @@ export default {
       mostrar: true,
     }
   },
+  methods: {
+    // eslint-disable-next-line no-unused-vars
+    beforeEnter(el) {
+      console.log('beforeEnter');
+    },
+    // eslint-disable-next-line no-unused-vars
+    enter(el, done) {
+      console.log('enter');
+      done();
+    },
+    afterEnter() {
+      console.log('afterEnter');
+    },
+    enterCancelled() {
+      console.log('enterCancelled');
+    },
+    beforeLeave() {
+      console.log('beforeLeave');
+    },
+    leave(el, done) {
+      console.log('enter');
+      done();
+    },
+    afterLeave() {
+      console.log('afterLeave');
+    },
+    leaveCancelled() {
+      console.log('leaveCancelled');
+    },
+  }
 }
 </script>
 
