@@ -55,12 +55,18 @@ export default {
     transform: scale(1);
   }*/
 
+  .slide-enter, .slide-leave-to {
+    opacity: 0;
+  }
+
   .slide-enter-active {
     animation: slide 0.7s;
+    transition: opacity 0.7s;
   }
 
   .slide-leave-active {
     animation: slide 0.7s reverse;
+    transition: opacity 0.7s;
   }
 
   @keyframes slide {
