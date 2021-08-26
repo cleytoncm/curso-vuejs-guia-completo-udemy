@@ -44,14 +44,23 @@ export default {
     }
   },
   methods: {
-    // eslint-disable-next-line no-unused-vars
     beforeEnter(el) {
+      el.style.opacity = 0;
       console.log('beforeEnter');
     },
-    // eslint-disable-next-line no-unused-vars
     enter(el, done) {
       console.log('enter');
-      done();
+
+      let contagem = 0;
+      const intervalo = setInterval(() => {
+        el.style.opacity = +el.style.opacity + 0.1;
+        contagem++;
+
+        if (contagem > 10) {
+          clearInterval(intervalo);
+          done();
+        }
+      }, 150);
     },
     afterEnter() {
       console.log('afterEnter');
@@ -59,16 +68,33 @@ export default {
     enterCancelled() {
       console.log('enterCancelled');
     },
-    beforeLeave() {
+    beforeLeave(el) {
       console.log('beforeLeave');
+      el.style.transition = 'width 0.5s';
+      el.style.overflow = 'hidden';
+      el.style.whiteSpace = 'nowrap';
     },
     leave(el, done) {
       console.log('enter');
-      done();
+
+      let contagem = 0;
+      const tamanho = el.offsetWidth;
+
+      const intervalo = setInterval(() => {
+        el.style.width = (tamanho * (1 - (contagem / 10))) + 'px';
+        contagem++;
+
+        if (contagem > 10) {
+          clearInterval(intervalo);
+          done();
+        }
+      }, 150);
+
     },
     afterLeave() {
       console.log('afterLeave');
     },
+    // somente funciona para o v-show
     leaveCancelled() {
       console.log('leaveCancelled');
     },
