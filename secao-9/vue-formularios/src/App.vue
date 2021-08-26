@@ -94,7 +94,7 @@
             <div class="form-group">
 
               <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input">
+                <input type="checkbox" class="form-check-input" v-model="desenvolvedor.notificacões">
                 <label class="form-check-label">Receber notificações por email</label>
               </div>
 
@@ -128,7 +128,7 @@
 <!--                <pre>{{ desenvolvedor.biografia }}</pre>-->
                 <div style="white-space: pre">{{ desenvolvedor.biografia }}</div>
               </li>
-              <li class="list-group-item"><strong>Receber notificações?</strong> </li>
+              <li class="list-group-item"><strong>Receber notificações?</strong> {{ desenvolvedor.notificacões ? 'Sim' : 'Não' }}</li>
             </ul>
 
             <div class="card-header">Model</div>
@@ -158,6 +158,7 @@ export default {
         idade: 28,
         biografia: 'Sou desenvolvedor',
         genero: 'Masculino',
+        notificacões: false,
       }
     }
   }
