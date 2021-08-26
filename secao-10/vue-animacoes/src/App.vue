@@ -29,29 +29,16 @@ export default {
 </script>
 
 <style scoped>
-  /* Entrada */
-  .fade-enter {
+  .fade-enter, .fade-leave-to {
     opacity: 0;
   }
 
-  .fade-enter-active {
+  .fade-enter-active, .fade-leave-active {
     transition: opacity 1s;
   }
 
-  .fade-enter-to {
+  /* Não necessário para o caso de opacity */
+  /*.fade-enter-to, .fade-leave {
     opacity: 1;
-  }
-
-  /* Saída */
-  .fade-leave {
-    opacity: 1;
-  }
-
-  .fade-leave-active {
-    transition: opacity 1s;
-  }
-
-  .fade-leave-to {
-    opacity: 0;
-  }
+  }*/
 </style>
