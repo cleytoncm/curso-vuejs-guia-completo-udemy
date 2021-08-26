@@ -10,7 +10,7 @@
     <div class="container">
       <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
 
-      <transition name="slide">
+      <transition name="slide" type="animation">
         <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
       </transition>
 
@@ -61,7 +61,7 @@ export default {
 
   .slide-enter-active {
     animation: slide 0.7s;
-    transition: opacity 0.7s;
+    transition: opacity 2s;
   }
 
   .slide-leave-active {
