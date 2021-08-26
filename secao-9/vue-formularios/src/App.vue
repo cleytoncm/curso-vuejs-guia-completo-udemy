@@ -52,8 +52,13 @@
 
             <div class="form-group">
               <label>Ocupação:</label>
-              <select class="form-control" placeholder="Seu email">
-                <option>Selecione uma opção...</option>
+              <select class="form-control" v-model="desenvolvedor.ocupacao">
+                <option value="" disabled>Selecione um opção...</option>
+                <option
+                    v-for="(ocupacao, indice) in ocupacoes"
+                    :key="indice"
+                    :value="ocupacao"
+                >{{ ocupacao }}</option>
               </select>
             </div>  
 
@@ -128,12 +133,14 @@
               <li class="list-group-item"><strong>Idade:</strong> {{ desenvolvedor.idade }}</li>
               <li class="list-group-item"><strong>Gênero:</strong> {{ desenvolvedor.genero }}</li>
               <li class="list-group-item">
-                <strong>Ocupação:</strong>
+                <strong>Ocupação:</strong> {{ desenvolvedor.ocupacao }}
+              </li>
+              <li class="list-group-item">
+                <strong>Tecnologias:</strong>
                 <ul>
                   <li v-for="(tecnologia, indice) in desenvolvedor.tecnologias" :key="indice">{{ tecnologia }}</li>
                 </ul>
               </li>
-              <li class="list-group-item"><strong>Tecnologias:</strong> </li>
               <li class="list-group-item">
                 <strong>Biografia:</strong>
 <!--                <pre>{{ desenvolvedor.biografia }}</pre>-->
@@ -171,7 +178,15 @@ export default {
         genero: 'Masculino',
         tecnologias: [],
         notificacoes: 'Não',
-      }
+        ocupacao: ''
+      },
+      ocupacoes: [
+        'Desenvolvedor Front-end (Web)',
+        'Desenvolvedor Front-end (Mobile)',
+        'Desenvolvedor Front-end (Web + Mobile)',
+        'Desenvolvedor Back-end',
+        'Desenvolvedor Full Stack',
+      ]
     }
   }
 }
