@@ -21,17 +21,17 @@
 
             <div class="form-group">
               <label>Nome:</label>
-              <input type="text" class="form-control" placeholder="Seu nome" v-model="desenvolvedor.nome">
+              <input type="text" class="form-control" placeholder="Seu nome" v-model.trim="desenvolvedor.nome">
             </div>
 
             <div class="form-group">
               <label>Endereço de email:</label>
-              <input type="email" class="form-control" placeholder="Seu email" v-model="desenvolvedor.email">
+              <input type="email" class="form-control" placeholder="Seu email" v-model.trim.lazy="desenvolvedor.email">
             </div>
 
             <div class="form-group">
               <label>Idade:</label>
-              <input type="number" class="form-control" placeholder="Sua idade" v-model="desenvolvedor.idade">
+              <input type="number" class="form-control" placeholder="Sua idade" v-model.number="desenvolvedor.idade">
             </div>
 
             <div class="form-group">
