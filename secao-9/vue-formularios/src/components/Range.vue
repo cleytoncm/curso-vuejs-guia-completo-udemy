@@ -3,10 +3,10 @@
     <label for="">{{ customLabel }}</label>
     <input
         type="range"
-        :value="value"
+        :value="valor"
         v-bind="$attrs"
         :class="inputClasses"
-        @input="atualizar"
+        @change="atualizar"
     >
   </div>
 </template>
@@ -14,9 +14,13 @@
 <script>
 export default {
   inheritAttrs: false,
+  model: {
+    prop: 'valor',
+    event: 'change',
+  },
   props: {
     label: String,
-    value: [Number, String],
+    valor: [Number, String],
     inputClasses: [String, Object, Array],
   },
   created() {
@@ -29,13 +33,13 @@ export default {
   },
   data() {
     return {
-      valorAtual: this.value || this.$attrs.min,
+      valorAtual: this.valor || this.$attrs.min,
     }
   },
   methods: {
     atualizar(event) {
       const valor = event.target.value;
-      this.$emit('input', valor);
+      this.$emit('change', valor);
       this.valorAtual = valor;
     }
   }
