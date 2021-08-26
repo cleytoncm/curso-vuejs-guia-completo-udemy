@@ -60,7 +60,7 @@ export default {
   }
 
   .slide-enter-active {
-    animation: slide 0.7s;
+    animation: slide 0.7s ease-in-out;
     transition: opacity 2s;
   }
 
