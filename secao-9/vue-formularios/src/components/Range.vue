@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     customLabel() {
-      return `${this.label} (R$ ${this.valorAtual})`
+      return `${this.label} (R$ ${this.valor || this.$attrs.min})`
     }
   },
   data() {
@@ -40,7 +40,6 @@ export default {
     atualizar(event) {
       const valor = event.target.value;
       this.$emit('change', valor);
-      this.valorAtual = valor;
     }
   }
 }
