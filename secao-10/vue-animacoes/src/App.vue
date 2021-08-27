@@ -39,6 +39,10 @@
           appear-active-class="animate__animated animate__flipInY"
           appear-to-class=""
 
+          @before-appear="beforeAppear"
+          @appear="appear"
+          @after-appear="afterAppear"
+          @appear-cancelled="appearCancelled"
 
           enter-class=""
           enter-active-class="animate__animated animate__bounceInLeft"
@@ -113,6 +117,19 @@ export default {
     // somente funciona para o v-show
     leaveCancelled() {
       console.log('leaveCancelled');
+    },
+    beforeAppear() {
+      console.log('beforeAppear');
+    },
+    appear(el, done) {
+      done();
+      console.log('appear');
+    },
+    afterAppear() {
+      console.log('afterAppear');
+    },
+    appearCancelled() {
+      console.log('appearCancelled');
     },
   }
 }
