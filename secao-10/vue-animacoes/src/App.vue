@@ -76,7 +76,7 @@ export default {
     transform: translateX(-70px);
   }
 
-  .list-enter-active, .list-leave-active {
+  .list-enter-active, .list-leave-active, .list-move {
     transition: all 1s;
   }
 
