@@ -17,7 +17,7 @@
       <div class="alert alert-info">
         <h3 class="font-weight-light">
           <strong>Número: </strong>
-          <span>{{ numero }}</span>
+          <span>{{ numeroAnimado }}</span>
         </h3>
       </div>
 
@@ -26,10 +26,24 @@
 </template>
 
 <script>
+import { TweenLite } from 'gsap';
+
 export default {
   data() {
     return {
       numero: 0,
+      numeroInterpolado: 0,
+    }
+  },
+  computed: {
+    numeroAnimado() {
+      return this.numeroInterpolado.toFixed(0);
+    },
+  },
+  watch: {
+    // eslint-disable-next-line no-unused-vars
+    numero(novoNumero, antigoNumero) {
+      TweenLite.to(this.$data, 2, {numeroInterpolado: novoNumero});
     }
   },
 }
