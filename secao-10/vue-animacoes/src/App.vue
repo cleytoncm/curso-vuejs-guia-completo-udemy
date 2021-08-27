@@ -28,10 +28,22 @@
         </select>
       </div>
 
+      <div class="form-group mb-3">
+        <label>Component:</label>
+        <select class="form-control" v-model="componenteSelecionado">
+          <option value="AppHome">Home</option>
+          <option value="AppSobre">Sobre</option>
+        </select>
+      </div>
+
+<!--      <transition :name="animacaoSelecionada" mode="out-in">-->
+<!--        <div :class="classesDeAlerta" :key="alertaAtual">Animações no Vue</div>-->
+<!--&lt;!&ndash;        <div class="alert alert-warning" v-if="alertaAtual === 'warning'" key="warning">Animações no Vue (alerta)</div>-->
+<!--        <div class="alert alert-success" v-if="alertaAtual === 'success'" key="sucesso">Animações no Vue (success)</div>&ndash;&gt;-->
+<!--      </transition>-->
+
       <transition :name="animacaoSelecionada" mode="out-in">
-        <div :class="classesDeAlerta" :key="alertaAtual">Animações no Vue</div>
-<!--        <div class="alert alert-warning" v-if="alertaAtual === 'warning'" key="warning">Animações no Vue (alerta)</div>
-        <div class="alert alert-success" v-if="alertaAtual === 'success'" key="sucesso">Animações no Vue (success)</div>-->
+        <component :is="componenteSelecionado"></component>
       </transition>
 
     </div>
@@ -40,6 +52,10 @@
 
 <script>
 export default {
+  components: {
+    AppHome: () => import('./components/Home'),
+    AppSobre: () => import('./components/Sobre'),
+  },
   computed: {
     classesDeAlerta() {
       return {
@@ -53,6 +69,7 @@ export default {
       mostrar: true,
       animacaoSelecionada: 'fade',
       alertaAtual: 'info',
+      componenteSelecionado: 'AppHome',
     }
   },
 }
