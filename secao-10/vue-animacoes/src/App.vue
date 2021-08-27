@@ -20,7 +20,7 @@
         >
       </div>
 
-      <transition-group tag="ul" class="list-group">
+      <transition-group tag="ul" class="list-group" name="list">
         <li
             class="list-group-item"
             v-for="(tecnologia, indice) in tecnologias"
@@ -71,5 +71,13 @@ export default {
 
 
 <style scoped>
+  .list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  .list-enter-active, .list-leave-active {
+    transition: all 1s;
+  }
 
 </style>
