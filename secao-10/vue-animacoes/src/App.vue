@@ -17,6 +17,9 @@
           leave-active-class="animate__animated animate__bounceOutDown"
       >-->
       <transition
+
+          appear
+
           @before-enter="beforeEnter"
           @enter="enter"
           @after-enter="afterEnter"
