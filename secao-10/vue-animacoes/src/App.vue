@@ -16,7 +16,7 @@
           enter-to-class=""
           leave-active-class="animate__animated animate__bounceOutDown"
       >-->
-      <transition
+<!--      <transition
 
           appear
 
@@ -31,6 +31,19 @@
           @leave-cancelled="leaveCancelled"
 
           :css="false"
+      >-->
+      <transition
+          appear
+
+          appear-class=""
+          appear-active-class="animate__animated animate__flipInY"
+          appear-to-class=""
+
+
+          enter-class=""
+          enter-active-class="animate__animated animate__bounceInLeft"
+          enter-to-class=""
+          leave-active-class="animate__animated animate__bounceOutDown"
       >
         <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
       </transition>
