@@ -8,9 +8,10 @@
     </div>
 
     <div class="container">
-      <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
+<!--      <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>-->
 
       <div class="form-group mb-3">
+        <label>Animações:</label>
         <select class="form-control" v-model="animacaoSelecionada">
           <option value="fade">Fade</option>
           <option value="slide">Slide</option>
@@ -18,9 +19,19 @@
         </select>
       </div>
 
+      <div class="form-group mb-3">
+        <label>Mensagem:</label>
+        <select class="form-control" v-model="alertaAtual">
+          <option value="info">Informação</option>
+          <option value="warning">Alerta</option>
+          <option value="success">Sucesso</option>
+        </select>
+      </div>
+
       <transition :name="animacaoSelecionada" mode="out-in">
-        <div class="alert alert-info" v-if="mostrar" key="informacao">Animações no Vue (informação)</div>
-        <div class="alert alert-success" v-else key="sucesso">Animações no Vue (success)</div>
+        <div :class="classesDeAlerta" :key="alertaAtual">Animações no Vue</div>
+<!--        <div class="alert alert-warning" v-if="alertaAtual === 'warning'" key="warning">Animações no Vue (alerta)</div>
+        <div class="alert alert-success" v-if="alertaAtual === 'success'" key="sucesso">Animações no Vue (success)</div>-->
       </transition>
 
     </div>
@@ -29,10 +40,19 @@
 
 <script>
 export default {
+  computed: {
+    classesDeAlerta() {
+      return {
+        alert: true,
+        [`alert-${this.alertaAtual}`]: true
+      }
+    },
+  },
   data() {
     return {
       mostrar: true,
-      animacaoSelecionada: 'fade'
+      animacaoSelecionada: 'fade',
+      alertaAtual: 'info',
     }
   },
 }
