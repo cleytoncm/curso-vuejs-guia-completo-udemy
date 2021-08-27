@@ -18,7 +18,7 @@
         </select>
       </div>
 
-      <transition :name="animacaoSelecionada">
+      <transition :name="animacaoSelecionada" mode="out-in">
         <div class="alert alert-info" v-if="mostrar" key="informacao">Animações no Vue (informação)</div>
         <div class="alert alert-success" v-else key="sucesso">Animações no Vue (success)</div>
       </transition>
@@ -77,7 +77,7 @@ export default {
 
   .slide-enter-active {
     animation: slide 0.7s ease-in-out;
-    transition: opacity 2s;
+    transition: opacity 0.7s;
   }
 
   .slide-leave-active {
