@@ -10,14 +10,21 @@
     <div class="container">
       <h3 class="font-weight-light">Tecnologias</h3>
 
-      <div class="form-group">
-        <input
-            type="text"
-            class="form-control"
-            placeholder="Insira um novo item e pressione Enter"
-            @keyup.enter="adicionar"
-            ref="input"
-        >
+      <div class="row">
+        <div class="col-sm-2">
+          <button class="btn btn-info" @click="embaralhar">Emparalhar</button>
+        </div>
+        <div class="col-sm-10">
+          <div class="form-group">
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Insira um novo item e pressione Enter"
+                @keyup.enter="adicionar"
+                ref="input"
+            >
+          </div>
+        </div>
       </div>
 
       <transition-group tag="ul" class="list-group" name="list">
@@ -41,6 +48,7 @@
 </template>
 
 <script>
+import { shuffle } from 'lodash';
 export default {
   data() {
     return {
@@ -63,6 +71,9 @@ export default {
     },
     remover(indice) {
       this.tecnologias.splice(indice, 1);
+    },
+    embaralhar() {
+      this.tecnologias = shuffle(this.tecnologias);
     }
   },
 }
