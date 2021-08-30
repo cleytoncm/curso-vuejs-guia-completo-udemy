@@ -10,15 +10,20 @@ export default {
       id: this.$route.params.id
     }
   },
+  // eslint-disable-next-line no-unused-vars
+  beforeRouteUpdate(to, from, next) {
+    this.id = to.params.id;
+    next();
+  },
   created() {
     console.log('Parâmetros da rota: ', this.id);
   },
-  watch: {
-    // eslint-disable-next-line no-unused-vars
-    $route(to, from) {
-      this.id = to.params.id;
-    }
-  },
+  // watch: {
+  //   // eslint-disable-next-line no-unused-vars
+  //   $route(to, from) {
+  //     this.id = to.params.id;
+  //   }
+  // },
 }
 </script>
 
