@@ -11,8 +11,13 @@ export default new VueRouter({
     mode: 'history',
     linkActiveClass: 'btn btn-dark',
     routes: [
-        { path: '/contatos', component: Contatos },
-        { path: '/contatos/:id', component: ContatoDetalhe },
+        {
+            path: '/contatos',
+            component: Contatos,
+            children: [
+                { path: ':id', component: ContatoDetalhe },
+            ]
+        },
         { path: '/', component: Home },
     ],
 });
