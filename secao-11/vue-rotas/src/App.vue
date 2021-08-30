@@ -6,7 +6,7 @@
     </div>
 
     <div class="container">
-      <h3 class="font-weight-light">Contatos</h3>
+      <router-view></router-view>
     </div>
   </div>
 </template>
