@@ -13,18 +13,9 @@
 <script>
 export default {
   name: "ContatoDetalhes",
-  data() {
-    return {
-      id: this.$route.params.id
-    }
-  },
-  // eslint-disable-next-line no-unused-vars
-  beforeRouteUpdate(to, from, next) {
-    this.id = to.params.id;
-    next();
-  },
+  props: ['id'],
   created() {
-    console.log('Parâmetros da rota: ', this.id);
+    console.log('Parâmetros da rota: ', this.$props);
   },
   // watch: {
   //   // eslint-disable-next-line no-unused-vars

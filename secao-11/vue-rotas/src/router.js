@@ -23,14 +23,19 @@ export default new VueRouter({
                 {
                     path: ':id',
                     component: ContatoDetalhes,
-                    name: 'contato'
+                    name: 'contato',
+                    props: true,
                 },
                 {
                     path: ':id/editar',
                     alias: ':id/alterar',
                     components: {
                         default: ContatoEditar,
-                        'contato-detalhes': ContatoDetalhes
+                        'contato-detalhes': ContatoDetalhes,
+                    },
+                    props: {
+                      default: true,
+                      'contato-detalhes': true,
                     },
                 },
                 { path: '', component: ContatoHome, name: 'contatos' },
