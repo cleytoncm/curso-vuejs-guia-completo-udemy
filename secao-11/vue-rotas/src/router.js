@@ -17,7 +17,7 @@ export default new VueRouter({
             path: '/contatos',
             component: Contatos,
             children: [
-                { path: ':id', component: ContatoDetalhes, name: 'contato' },
+                { path: ':id', component: ContatoDetalhes },
                 {
                     path: ':id/editar',
                     components: {
@@ -25,9 +25,17 @@ export default new VueRouter({
                         'contato-detalhes': ContatoDetalhes
                     }
                 },
-                { path: '', component: ContatoHome },
+                { path: '', component: ContatoHome, name: 'contato' },
             ]
         },
-        { path: '/', component: Home },
+        { path: '/home', component: Home },
+        // { path: '/', redirect: '/contatos' },
+        {
+            path: '/',
+            // eslint-disable-next-line no-unused-vars
+            redirect: to => {
+                return '/contatos'
+            }
+        },
     ],
 });
