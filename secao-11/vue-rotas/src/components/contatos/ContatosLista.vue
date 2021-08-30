@@ -7,7 +7,7 @@
           type="search"
           class="form-control"
           @keyup.enter="buscar"
-          :value="$route.query.busca"
+          :value="busca"
       >
     </div>
 
@@ -36,6 +36,7 @@ export default {
   components: {
     ContatosListaItem
   },
+  props: ['busca'],
   data() {
     return {
       contatos: [
