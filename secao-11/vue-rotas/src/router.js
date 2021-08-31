@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 
 const extrairParamentroId = route => ({ id: +route.params.id });
 
-export default new VueRouter({
+const router = new VueRouter({
     mode: 'history',
     linkActiveClass: 'btn btn-dark',
     routes: [
@@ -62,3 +62,16 @@ export default new VueRouter({
         { path: '*', component: Error404 },
     ],
 });
+
+// eslint-disable-next-line no-unused-vars
+router.beforeEach((to, from, next) => {
+    console.log('beforeEach');
+    next();
+});
+
+// eslint-disable-next-line no-unused-vars
+router.afterEach((to, from) => {
+    console.log('afterEach');
+});
+
+export default router;
