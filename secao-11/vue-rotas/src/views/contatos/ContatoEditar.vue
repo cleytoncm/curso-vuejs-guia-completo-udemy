@@ -14,6 +14,9 @@
 export default {
   name: "ContatoEditar",
   props: ['id'],
+  created() {
+    console.log('Parâmetros: ', this.$route.params);
+  }
 }
 </script>
 
