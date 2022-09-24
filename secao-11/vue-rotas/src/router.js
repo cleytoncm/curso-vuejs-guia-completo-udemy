@@ -35,8 +35,17 @@ const router = new VueRouter({
                 {
                     // path: ':id(\\d+)/editar/:opcional?',
                     // path: ':id(\\d+)/editar/:zeroOuMais*',
-                    path: ':id(\\d+)/editar/:umOuMais+',
+                    // path: ':id(\\d+)/editar/:umOuMais+',
+                    path: ':id(\\d+)/editar',
                     alias: ':id(\\d+)/alterar',
+                    beforeEnter(to, from, next){
+                        console.log('beforeEnter');
+                        // if (to.query.autenticado === 'true') {
+                        //     return next();
+                        // }
+                        // next('/contatos');
+                        next();
+                    },
                     components: {
                         default: ContatoEditar,
                         'contato-detalhes': ContatoDetalhes,

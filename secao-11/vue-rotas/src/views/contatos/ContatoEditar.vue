@@ -14,8 +14,19 @@
 export default {
   name: "ContatoEditar",
   props: ['id'],
-  created() {
-    console.log('Parâmetros: ', this.$route.params);
+  data() {
+    return {
+      curso: 'Curso de VueJS'
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log('beforeRouteEnter');
+    if (to.query.autenticado === 'true') {
+      return next((vm) => {
+        console.log('Curso ' + vm.curso);
+      });
+    }
+    next('/contatos');
   }
 }
 </script>
