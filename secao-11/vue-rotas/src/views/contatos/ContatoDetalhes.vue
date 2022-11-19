@@ -1,7 +1,9 @@
 <template>
   <div>
     <h3 class="font-weight-light">Detalhes sobre o Contato com id: {{ id }}</h3>
-    <p>Paramêttrtos: {{ parametros }}</p>
+    <div style="height: 900px"></div>
+    <p id="parametros">Paramêtros: {{ parametros }}</p>
+    <p>Hash: {{ $route.hash }}</p>
     <router-link
         :to="`/contatos/${id}/editar`"
         class="btn btn-primary"
