@@ -8,6 +8,9 @@ import ContatoHome from "./views/contatos/ContatoHome";
 import ContatoEditar from "./views/contatos/ContatoEditar";
 import Error404 from "./views/Error404";
 import Erro404Contatos from "./views/contatos/Erro404Contatos";
+import Login from "./views/login/Login";
+
+import EventBus from './event-bus';
 
 Vue.use(VueRouter);
 
@@ -38,6 +41,9 @@ const router = new VueRouter({
                     // path: ':id(\\d+)/editar/:umOuMais+',
                     path: ':id(\\d+)/editar',
                     alias: ':id(\\d+)/alterar',
+                    meta: {
+                        requerAutenticacao: true,
+                    },
                     beforeEnter(to, from, next){
                         console.log('beforeEnter');
                         // if (to.query.autenticado === 'true') {
@@ -66,6 +72,7 @@ const router = new VueRouter({
             ]
         },
         { path: '/home', component: Home },
+        { path: '/login', component: Login },
         // { path: '/', redirect: '/contatos' },
         {
             path: '/',
@@ -81,6 +88,17 @@ const router = new VueRouter({
 // eslint-disable-next-line no-unused-vars
 router.beforeEach((to, from, next) => {
     console.log('beforeEach');
+    console.log('Requer Autenticação?', to.meta.requerAutenticacao);
+    const estaAutenticado = EventBus.autenticado
+    if (to.matched.some(rota => rota.meta.requerAutenticacao)) {
+        if (!estaAutenticado) {
+            next({
+                path: '/login',
+                query: { redirecionar: to.fullPath }
+            })
+            return;
+        }
+    }
     next();
 });
 
