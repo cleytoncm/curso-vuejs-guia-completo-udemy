@@ -78,6 +78,11 @@ router.beforeEach((to, from, next) => {
     next();
 });
 
+router.beforeResolve((to, from, next) => {
+    console.log('beforeResolve');
+    next();
+})
+
 // eslint-disable-next-line no-unused-vars
 router.afterEach((to, from) => {
     console.log('afterEach');
