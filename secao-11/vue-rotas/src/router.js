@@ -44,7 +44,13 @@ const router = new VueRouter({
                         //     return next();
                         // }
                         // next('/contatos');
-                        next();
+                        next(); // continuar
+                        // next(true); // continuar
+                        // next(false); // bloquear
+                        // next('/contatos'); // redirecionar
+                        // next({ name: 'contatos' }); // redirecionar - pode usar o mesmo esquema de objeto da routelink
+                        // next(new Error(`Permissões insuficientes para acessar o recurso "${to.fullPath}"`)); // lançar erro
+
                     },
                     components: {
                         default: ContatoEditar,
@@ -87,5 +93,9 @@ router.beforeResolve((to, from, next) => {
 router.afterEach((to, from) => {
     console.log('afterEach');
 });
+
+router.onError((erro) => {
+    console.log(erro)
+})
 
 export default router;
